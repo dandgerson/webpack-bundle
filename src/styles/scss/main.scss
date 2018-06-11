@@ -1,9 +1,15 @@
 // main.scss
 
+div {
+    width: 300px;
+}
+
 .user-list {
     width: 300px;
+    height: 400px;
     display: inline-block;
     border-left: 3px solid;
+    background: url('../../img/400.jpg');
 }
 
 .user-form {

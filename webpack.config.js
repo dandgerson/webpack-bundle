@@ -2,16 +2,20 @@
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index',
+  entry: {
+    app: './src/index',
+    print: './src/print'
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     library: 'app'
   },
   module: {
@@ -23,14 +27,32 @@ module.exports = {
           loader: 'babel-loader'
         }
       }, {
-        test: /\.scss$/,
+        test: /\.(scss|sass)$/,
         use: [
           // 'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
-      }
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'img/[name].[ext]'
+          },
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'fonts/[name].[ext]'
+          },
+        },
+      },
     ]
   },
 
@@ -42,11 +64,13 @@ module.exports = {
   devtool: 'source-map',
 
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      // template: './src/index.html'
+      title: 'My awesome App'
     })
   ]
 };
