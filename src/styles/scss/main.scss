@@ -1,16 +1,14 @@
-body {
-    background-color: lightgray;
-}
+// main.scss
 
 .user-list {
     width: 300px;
     display: inline-block;
-    border-left: 3px solid darkgreen;
+    border-left: 3px solid;
 }
 
 .user-form {
     width: 300px;
     display: inline-block;
-    outline: 2px solid darkslategrey;
+    outline: 2px solid;
     vertical-align: top;
 }

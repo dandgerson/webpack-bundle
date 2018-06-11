@@ -1,7 +1,5 @@
 'use strict';
 
-import '../styles/scss/style.scss';
-
 import UserList from './user-list';
 import UserForm from './user-form';
 
