@@ -11,7 +11,7 @@ module.exports = {
   entry: './src/index',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'build.js',
+    filename: 'bundle.js',
     library: 'app'
   },
   module: {
