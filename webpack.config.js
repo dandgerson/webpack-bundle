@@ -63,7 +63,7 @@ module.exports = {
 
   devtool: 'source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: path.resolve(__dirname, './dist')
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
