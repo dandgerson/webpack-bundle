@@ -56,13 +56,15 @@ module.exports = {
     ]
   },
 
-  watch: true,
+  // watch: true,
   watchOptions: {
     aggregateTimeout: 1000
   },
 
   devtool: 'source-map',
-
+  devServer: {
+    contentBase: './dist'
+  },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new MiniCssExtractPlugin({
