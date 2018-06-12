@@ -4,20 +4,24 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const webpack = require('webpack');
+
 
 const path = require('path');
 
 module.exports = {
   mode: 'development',
+
   entry: {
-    app: './src/index',
-    print: './src/print'
+    app: './src/index'
   },
+
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
     library: 'app'
   },
+
   module: {
     rules: [
       {
@@ -29,8 +33,8 @@ module.exports = {
       }, {
         test: /\.(scss|sass)$/,
         use: [
-          // 'style-loader',
-          MiniCssExtractPlugin.loader,
+          'style-loader',
+          // MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -62,17 +66,22 @@ module.exports = {
   },
 
   devtool: 'source-map',
+
   devServer: {
-    contentBase: path.resolve(__dirname, './dist')
+    contentBase: './dist',
+    hot: true
   },
+
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new MiniCssExtractPlugin({
-      filename: '[name].css'
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css'
+    // }),
     new HtmlWebpackPlugin({
       // template: './src/index.html'
       title: 'My awesome App'
-    })
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 };
