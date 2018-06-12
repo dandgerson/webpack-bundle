@@ -18,6 +18,10 @@ new Application();
 
 import { cube } from './libs/math';
 
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!');
+} else console.log('We are in production mode!');
+
 function component() {
   let element = document.createElement('pre');
 

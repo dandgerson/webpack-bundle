@@ -10,8 +10,8 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  // mode: 'development',
-  mode: 'production',
+  mode: 'development',
+  // mode: 'production',
 
   entry: {
     app: './src/index'
