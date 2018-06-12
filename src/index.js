@@ -16,33 +16,20 @@ new Application();
 
 // ###################################################
 
-import printMe from './print';
+import { cube } from './libs/math';
 
 function component() {
-  let element = document.createElement('div');
-  let btn = document.createElement('button');
+  let element = document.createElement('pre');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
-
-  element.appendChild(btn);
+  element.innerHTML = [
+    'Hello webpack',
+    '5 cubed is equal to ' + cube(5)
+  ].join('\n\n');
 
   return element;
 }
 
-let element = component();
-document.body.append(element);
-
-if (module.hot) {
-  module.hot.accept('./print.js', () => {
-    console.log('Accepting the updated printMe module!');
-    element.remove();
-    element = component();
-    document.body.append(element);
-  });
-}
+document.body.append(component());
 
 // ####################################################
 

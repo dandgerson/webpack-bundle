@@ -1,6 +1,6 @@
 'use strict';
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -10,7 +10,8 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  // mode: 'development',
+  mode: 'production',
 
   entry: {
     app: './src/index'
@@ -30,7 +31,8 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }, {
+      }, 
+      {
         test: /\.(scss|sass)$/,
         use: [
           'style-loader',
@@ -38,7 +40,7 @@ module.exports = {
           'css-loader',
           'sass-loader'
         ]
-      },
+      }, 
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: {
@@ -78,7 +80,6 @@ module.exports = {
     //   filename: '[name].css'
     // }),
     new HtmlWebpackPlugin({
-      // template: './src/index.html'
       title: 'My awesome App'
     }),
     new webpack.NamedModulesPlugin(),
