@@ -7,7 +7,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/index'
+    app: './src/index',
+    another: './src/another-module'
   },
 
   output: {
@@ -48,8 +49,18 @@ module.exports = {
 
   devtool: 'source-map',
 
+
+  optimization: {
+    // prevent duplication with splitChunks
+    splitChunks: {
+      chunks: 'all'
+    },
+  },
+
   plugins: [
+    // delete old build
     new CleanWebpackPlugin(['dist']),
+    // generate index.html
     new HtmlWebpackPlugin({
       title: 'My awesome App'
     }),

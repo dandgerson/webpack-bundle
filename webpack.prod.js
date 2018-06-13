@@ -28,7 +28,7 @@ module.exports = merge(common, {
     ]
   },
 
-  optimization: {
+  optimization: {    
     minimizer: [
       new UglifyJSPlugin({
         cache: true,

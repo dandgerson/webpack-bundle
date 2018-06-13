@@ -13,21 +13,29 @@ module.exports = merge(common, {
       {
         test: /\.(sc|sa|c)ss$/,
         use: [
+          /*
+          ** if we set MiniCssExtractPlugin instead style-loader
+          ** HMR will not working with styles, so we must use the
+          ** style-loader in development mode with HMR
+          */
+          // last compiling
           'style-loader',
+          // second compiling
           'css-loader',
-          'sass-loader'
+          // first compiling
+          'sass-loader',
         ]
       },
     ]
   },
 
   watchOptions: {
-    aggregateTimeout: 1000
+    aggregateTimeout: 1000,
   },
 
   devServer: {
     contentBase: './dist',
-    hot: true
+    hot: true,
   },
 
   plugins: [
