@@ -2,14 +2,8 @@
 
 const path = require('path');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
-const devMode = process.env.NODE_ENV !== 'production';
-
-
-
 
 module.exports = {
   entry: {
@@ -31,14 +25,6 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
-      {
-        test: /\.(sc|sa|c)ss$/,
-        use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ]
-      }, 
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: {
@@ -64,10 +50,6 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-    }),
     new HtmlWebpackPlugin({
       title: 'My awesome App'
     }),

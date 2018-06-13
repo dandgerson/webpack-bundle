@@ -16,24 +16,10 @@ new Application();
 
 // ###################################################
 
-import { cube } from './libs/math';
-
-if (process.env.NODE_ENV !== 'production') {
-  console.log('Looks like we are in development mode!');
-} else console.log('We are in production mode!');
-
-function component() {
-  let element = document.createElement('pre');
-
-  element.innerHTML = [
-    'Hello webpack',
-    '5 cubed is equal to ' + cube(5)
-  ].join('\n\n');
-
-  return element;
-}
-
-document.body.append(component());
+if (process.env.NODE_ENV === 'development')
+  console.warn('Looks like we are in development mode!'); 
+if (process.env.NODE_ENV === 'production')
+  console.warn('We are in production mode!');
 
 // ####################################################
 

@@ -8,6 +8,19 @@ const common = require('./webpack.common.js');
 module.exports = merge(common, {
   mode: 'development',
 
+  module: {
+    rules: [
+      {
+        test: /\.(sc|sa|c)ss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+    ]
+  },
+
   watchOptions: {
     aggregateTimeout: 1000
   },
