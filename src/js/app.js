@@ -46,7 +46,7 @@ export default class Application {
     xhr.send();
 
     xhr.onerror = () => {
-      alert('Sorry error! Try again later');
+      console.log('XHR: Sorry error! Try again later');
     };
   }
 

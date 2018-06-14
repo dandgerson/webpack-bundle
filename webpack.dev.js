@@ -6,6 +6,7 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
+  // point the webpack in wich mode it should bundling
   mode: 'development',
 
   module: {

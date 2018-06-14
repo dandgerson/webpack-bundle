@@ -12,8 +12,9 @@ module.exports = {
   },
 
   output: {
+    // path.resolve() provides the correct path
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].bundle.js',
+    filename: '[name].js',
     library: 'app'
   },
 
@@ -21,8 +22,11 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        // may be exclude field is not neccessary when used the include field???
         exclude: /node_modules/,
+        include: path.resolve(__dirname, './src'),
         use: {
+          // -loader suffix is no longer optional
           loader: 'babel-loader'
         }
       },
@@ -62,7 +66,7 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     // generate index.html
     new HtmlWebpackPlugin({
-      title: 'My awesome App'
+      title: 'My awesome App',
     }),
-  ]
+  ],
 };
